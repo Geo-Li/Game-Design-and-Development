@@ -1,0 +1,26 @@
+Instructions
+
+What you will see when you start the game:
+In this game, you will start with a starting screen, and press the start button to start the game.
+
+Entering the main scene, you will see two characters, on the left, is the player character you can control, and on the right, is the enemy character that you need to defeat. Above them, is the health bar for the enemy. (To clarify, here the health system is another version of the scoring system, at least the professor said it's okay to count this one) I didn't assign hp to the player character, read below for more information. Your goal is to control the player character to attack the enemy.
+
+How to control your character:
+Use A/Left Arrow on your keyboard to control your character move left.
+Use D/Right Arrow on your keyboard to control your character move right.
+Alternatively, use the left stick on your controller to control the movement.
+To simplify the game, Jump action is not provided.
+Use J on your keyboard to Drop a sword.
+Alternatively, use button 0 on your controller to drop the weapon. (Y on your Switch Pro controller, square on your PS controller, etc.)
+
+How to win the game:
+I have assigned health points to the enemy, so the player's goal is to reduce the enemy's hp to win the game.
+But how to reduce the enemy's hp?
+Each dropped sword will cause damage to the enemy if the enemy collides with it, so try to let your enemy step on the swords.
+
+How to lose the game:
+To make this game not too stressful, I didn't assign any health points to the player character, so the only way to lose the game is by not killing the enemy before the time runs out, in this game, I set it to 60 seconds.
+
+Appendix:
+I have enabled the enemy AI to keep chasing players.
+If the player or enemy falls down the platform, they will be repositioned back to their starting point, and no damage will be applied.

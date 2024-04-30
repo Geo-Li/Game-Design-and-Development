@@ -1,0 +1,24 @@
+Instructions
+
+What you will see when you start the game:
+In this game, you will start with a starting screen, and press the start button to start the game.
+
+Entering the main screen, you will see a cook, and this will be the player character you can control. (See Controls below about how to control your character) Along your adventure, there are many objects on the screen but most of them are static, for example, the ground or the status. See Controls and Intractable Objects below about how each intractable object is doing.
+
+Goals:
+If you notice, the goal of the game is written on the starting screen, which is to retrieve the magic bread in the sky, in other words, on the top of the game map. To help you better understand what you need to do, here are the details: for the first level, you need to move to the right, jump above two obstacles, then you should see a ladder. Climb up that ladder to reach the second level. In the second level, you need to move left, which is to use jump and dash to pass the first gap and use jump and dash to reach the end of level two. Then you should see a ladder. Climb up that ladder to reach the third level. At this level, you need to move to the right. There are 4 roaming ghosts along your way, so try to avoid them. (Collide with them will teleport you to the start of level three) In the end of level three, you should see a ladder. Climb up the ladder to reach the fourth level. In this level, you need to move to the left, and you will see the magic bread the cook needs. Collide with the magic bread will lead to the winning screen.
+
+Controls:
+1. Movement: Use the A or left arrow key on your keyboard to control the cook to move leftward; use the D or right arrow key on your keyboard to control the cook to move rightward. 
+2. Jump: Use the space bar on your keyboard to control the cook to jump.
+3. Dash: Use the left or right shift keys on your keyboard to control the cook to dash for a short distance. 
+4. Climb Ladders: Use the W or up arrow to climb up the ladder; use the S or down arrow to climb down the ladder.
+
+Intractable Objects:
+Friendly NPC: There is a friendly NPC roaming on the second level. The popup dialogue box will show up if the player collides with the NPC.
+Ghosts: Ghosts will roam around on the third level. Collides with them will teleport the player character to the beginning of the third level.
+
+Appendix:
+Reposition Rules:
+If the cook has dropped from the platform, then the cook will be repositioned to the starting point on level one.
+If the cook hits the ghost, he will be repositioned to the level three starting point. 

@@ -1,0 +1,79 @@
+Aesthetics goals:
+1. Sensation: Make the player feel visually and acoustically pleased
+	Sign of success: players agreed that the style of the visual art I am using doesn't cause any disharmonic feelings, in other words, the art of the character shouldn't be different from the art of the background or the map. The sound effects in the game should correspond to the interactions, and the background music should make players willing to engage in the game
+	Sign of failure: players find themselves uncomfortable with the art style I had and find the music I incorporated in the game somehow too slow or too light to assist them in playing the game
+2. Challenge: Players should feel comfortable playing my game instead of being stressed that they can't make any progress
+	Sign of success: The game should be relatively easy to play, but it doesn't mean the player can finish the game without any effort. I would like players to at least be able to try out different interactions in the game and at the same time pass the game by using the knowledge of each possible interaction
+	Sign of failure: Players find themselves struggling in the game, this could be either because they cannot make progress over a long time playing or they find the interactions are not easy to learn
+3. Discovery: Players should find themselves being curious about exploring the map, which adds incentives for them to finish the game
+	Sign of success: while playing the game, players should find themselves willingly moving toward the endpoint and interacting with different objects on the mop with the available interaction keys
+	Sign of failure: players ceased exploring the map, which could have closed the game or stayed in the same spot for a long time
+
+
+Brainstorm
+To begin with, I would like to implement a platform game that asks the player to travel from the left side of the scene to the right side of the scene. Along the gameplay, I would implement some obstacles to sabotage the player's progress. Since we also need to include many moveable objects in this game, I would like to have some rolling rocks fall from above to hit the player. Mentioned about this, should I introduce the hp system for my player or should I just have the rock have the rock just push the player back? In this case, does push back pushes the player back to the spawn point? It would be awesome for me to include an AI player to compete with the player to reach the ending point, but it is not easy to implement such an AI function to be able to detect obstacles to be able to jump to be able to dodge collides, etc. so just an interesting mechanism I can add, but this one should have the lowest priority. I would also like to let the player be able to dash, which is a movement that allows the player to dash forward. (There could be a secret room where players can enter and win the game instantly, but again, this should have the lowest priority)
+
+
+Core Loop
+Move rightward, avoid gaps, dodge falling items, move rightward, avoid gaps, ..., find the right object, game ends
+I designed the core loop of this game to be simple because in this case, the player will focus more on the game environment, or in other words, they won't be distracted by the difficulty of the game, which is the interactions. Moreover, the simple core loop or interactions allow the player to explore the map with ease, which in turn will reward them to explore the map more.
+
+
+Production Starts
+11/10/2023
+Brainstormed about the game and put the ideas on this DevLog
+Picked some free assets from the asset store and they have a similar art style to my last game
+Set up the player character and the sample tile map for the environment. Assigned Rigidbody2D and Collider to each of them so the player can stand on the ground
+Adjusted the camera size and added a script to let the camera follow the player
+
+
+11/11/2023
+Tried to implement the player movement with the new input system but it is buggy on discrete inputs. In other words, the longer the player holds the jump button, the higher the player character will jump, which obviously is not what I want. Therefore, decided to use the old input system to read the keyboard inputs.
+
+
+11/12/2023
+Implemented the movement, jump, dash, and ladder climbing interactions for the player character
+	Decision: include all these interactions into the same PlayerController script
+	Use AD keys and left-right arrow keys for the horizontal movement control
+	Use the space bar for the jump
+	Use the left and right shift keys for the dashing
+	Use WS keys and up-down arrow keys for the ladder climbing control
+Implemented the first, second, and part of the third level
+	Level design decision: the first level will be the tutorial on how to use the jump key; the second level will be the tutorial on how to use the dash key based on the jump; the third level will ask the player to use the knowledge of jump and dash to avoid ghosts
+	Put the wood logs and boxes on the first level so the player can use them to reach the higher ground
+	Created some gaps and blocks for the player to stand on the second level
+	Put some ghosts on the third level
+	Decisions: combine the idea of falling stone and the push-back force into ghosts, which simply roam on the screen and when the player hits them, repositioned to the spawning point; since we are doing the reposition thing here, we can ignore the HP system here
+	Added ladders to connect each level
+Add the reposition script so each time the player falls down the level, the cook will be spawned on the starting point
+Set up the background
+	Decision: since the design map into an extremely long path will somehow waste the idea of the jump, I would like to stack up each level upward 
+	Stack up each background picture to denote different levels
+Improved the performance of the environment when the player hits the wall
+	Added a new material called Slip with the friction set to 0
+	Added another tile map to differentiate the ground from the wall, which for the ground should have the friction but for the wall, it should use the Slip material
+
+
+11/13/2023
+Finished implementing the third-level
+	Added a roam script so ghosts will roam around on the third level. In other words, the ghost will roam all the way to the end of the third level then they will roam left before the player's respawning point
+	Added an untouchable script to the ghost which repositions the player to the start of the third level when the player collides with the ghosts
+Introduced the monk on the second level to warn the player about the ghosts on the third level
+	Reused the same roam script to let the monk roam on the second level
+	When the player collides with the monk, a dialogue will show up on the top of the screen
+Implemented the fourth level
+	Added the bread floating animation
+	Added the scene-changing script to attach to the bread. Basically, when the player collides with the bread, the winning screen should be triggered
+Added the starting canvas and the winning screen scene
+	Click the start button on the starting canvas will disable the starting canvas but all the other components on the main screen will be activated
+Added the background music and the sound effects to the game
+	Added the audio source to the main camera on the main screen and the winning screen.
+	Loop the background music
+	Added the sound effect for jump and dash, which triggers or plays only when the player presses the corresponding buttons.
+Put the status, the gravestone, and the stones to denote the boundary of different levels
+Adjusted the jump force of the player
+Adjusted blocks in the map to make sure the player is able to complete each level with the available interaction keys
+
+
+Postmortem
+For my original plan, I would like to design and develop a platformer game that asks the player to travel from the left side of the map to the right side. To assist the adventure, I should implement some interactions for the player character. To make the game challenging, I should include some items like falling stones. To make the game interesting, I imagined adding an enemy AI and a secret room. I think I pretty much met the goal I set initially, except some of them have changed forms. This is still a platformer game, but not from left to right but from button to the top. There still are some moveable objects that undermine a player's progress, but they have been simplified to ghosts. I believe the art style or the audio I had for this game shouldn't be too bad, and I have finished the whole development cycle for this game. Therefore, I believe this game should be easy to play and should be enjoyable to play. The transitions of each element or component are smooth for this game. I don't really think there is anything wrong since I didn't plan this game to be super fancy or groundbreaking. Since I had a decent foundation on the game development, it was not painful for me to finish this game but the new input system is not friendly to me, partially because we don't have that much documentation on it. For this project, I think I learned how to implement dashes and ladder climbings
